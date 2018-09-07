@@ -1,8 +1,8 @@
-# IKEA Additional Produts Page
+# IKEA Additional Produts Page\
 
 This module handles the following views:\
 -- Coordinating products\
-  -- Data fed from products database
+  -- Data fed from products database\
 -- Designer thoughts\
   -- Data fed from designers database\
 -- Similar products by brand\
