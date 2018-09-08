@@ -1,25 +1,27 @@
-const path = require('path');
+var path = require('path');
+var SRC_DIR = path.join(__dirname, '/client');
+var DIST_DIR = path.join(__dirname, '/static');
 
 module.exports = {
-  entry: path.resolve(__dirname, './client'),
+  entry: `${SRC_DIR}/index.jsx`,
   output: {
-    path: path.resolve(__dirname, './static'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    path: DIST_DIR
   },
   mode: 'development',
   module: {
     rules: [
       {
+        test: /\.jsx?/,
+        include: SRC_DIR,
         loader: 'babel-loader',
-        test: /\.js[x]?/,
-        exclude: /(node_modules|dep)/,
-        options: {
+        query: {
           presets: ['react', 'env']
         }
+      }, {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
       }
     ]
-  },
-  resolve: {
-    extensions: ['.js', '.jsx']
   }
 };
