@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+var random = require('mongoose-simple-random');
 
 mongoose.connect('mongodb://localhost/IkeaDB', { useNewUrlParser: true });
 
@@ -32,6 +33,7 @@ var productSchema = new mongoose.Schema({
   coodinatingProducts: { type: Array }
 });
 
+productSchema.plugin(random);
 var products = mongoose.model('products', productSchema);
 
 var desginersSchema = new mongoose.Schema({
@@ -41,6 +43,7 @@ var desginersSchema = new mongoose.Schema({
   imageUrl: { type: String, required: true }
 });
 
+desginersSchema.plugin(random);
 var designers = mongoose.model('designers', desginersSchema);
 
 module.exports = { products, designers };
