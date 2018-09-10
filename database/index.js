@@ -27,8 +27,9 @@ var productSchema = new mongoose.Schema({
   // Ids of the products this current entry needs
 
   // For example, if this entry was for a lamp, the
-  // coordinating products would inlcude the ID for a lightbulb
+  // coordinating products would include the ID for a lightbulb
   // or extension cord
+  // *******************************************************
 
   coodinatingProducts: { type: Array }
 });

@@ -16,7 +16,9 @@ class DesignerThoughts extends Component {
   }
 
   getDesigners() {
-    axios.get('/api/designer')
+    axios.get('/api/designer', {
+      params: { productLine: 'fillmein' }
+    })
       .then((response) => {
         this.setState({
           designers: response.data

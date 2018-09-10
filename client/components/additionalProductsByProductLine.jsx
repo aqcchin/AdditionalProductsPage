@@ -21,7 +21,9 @@ class AdditionalProductsByType extends Component {
   }
 
   getProducts() {
-    axios.get('/api/product')
+    axios.get('/api/product', {
+      params: { productLine: 'fillmein' }
+    })
       .then((response) => {
         this.setState({
           products: response.data
@@ -33,7 +35,7 @@ class AdditionalProductsByType extends Component {
     return (
       <div className={styles.container}>
         {/* Fix below hard code for series name */}
-        <div className={styles.header}>More {this.state.products[0].productLine} series</div>
+        <div className={styles.header}>More {this.state.products[0].productLine.toUpperCase()} series</div>
         <div className={styles.displayContainer}>
           {this.state.products.map((product, i) => {
             var percentage = product.stars / 5 * 100;
