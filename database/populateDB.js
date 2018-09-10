@@ -1,5 +1,5 @@
 var designersData = require('./designersData.json');
-var productData = require('./designersData.json');
+var productData = require('./productsData.json');
 const { products, designers } = require('../database/index.js');
 
 
