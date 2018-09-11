@@ -36,7 +36,7 @@ class DesignerThoughts extends Component {
               <div className={styles.thoughtContainer}>
                 <span className={styles.header}>Designer thoughts</span>
                 <span className={styles.designer}>Designer&nbsp;{designer.designerName}</span>
-                <div className={styles.thought}>{designer.thoughts}</div>
+                <div className={styles.thought}>"{designer.thoughts}"</div>
               </div>
             </div>
           )

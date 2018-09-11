@@ -51,7 +51,9 @@ class AdditionalProductsByType extends Component {
           })}
         </div>
 
-
+        <div className={styles.linkContainer}>
+          <a className={styles.link} href="www.google.com">Go to Work lamps</a>
+        </div>
       </div>
     );
   }
