@@ -2,7 +2,7 @@
 // NEED TO IMPLEMENT FILTER FUNCTIONALITY ON THE GET REQUEST!!!
 
 import React, { Component } from 'react';
-import styles from '../styles/AdditionalProductsByType.css'
+import styles from '../styles/AdditionalProductsByProductLine.css'
 import axios from 'axios';
 
 class AdditionalProductsByType extends Component {
@@ -43,15 +43,17 @@ class AdditionalProductsByType extends Component {
 
             return (
               <div key={i} className={styles.product}>
-                <img src={product.imageUrl} className={styles.image}></img>
-                <span className={styles.productLine}>{product.productLine}</span>
-                <span className={styles.title}>{product.title}</span>
-                <span className={styles.price}>${product.price}.99</span>
+                <a href="#" className={styles.noDecoration}>
+                  <img src={product.imageUrl} className={styles.image}></img>
+                  <span className={styles.productLine}>{product.productLine}</span>
+                  <span className={styles.title}>{product.title}</span>
+                  <span className={styles.price}>${product.price}.99</span>
+                </a>
                 <div className={styles.starContainer}>
                   <div className={styles.starOff}>★★★★★</div>
                   <div style={{ 'width': width }} className={styles.starOn}>★★★★★</div>
                 </div>
-                <div className={styles.ratingCount}>&nbsp;({product.reviewCount})</div>
+                <div className={styles.ratingCount}>&nbsp;<a href="#" className={styles.noDecoration}>({product.reviewCount})</a></div>
               </div>
             )
           })}

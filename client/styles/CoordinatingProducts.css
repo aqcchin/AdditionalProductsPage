@@ -6,6 +6,11 @@
   margin: 0 auto;
 }
 
+.noDecoration {
+  text-decoration: none;
+  color: black;
+}
+
 .container {
   width: 1060px;
   margin: 0 auto;
@@ -45,6 +50,10 @@
 .product {
   position: relative;
   top: 0px;
+}
+
+.product:hover > .noDecoration {
+  text-decoration: underline;
 }
 
 .productContainer:hover > .magnifyContainer{

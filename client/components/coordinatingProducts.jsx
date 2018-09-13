@@ -74,15 +74,17 @@ class CoordinatingProducts extends Component {
                 return (
                   <div key={i} style={{ 'background': backgroundColor }} className={styles.productContainer}>
                     <div className={styles.product}>
-                      <img src={product.imageUrl} className={styles.image}></img>
-                      <span className={styles.productLine}>{product.productLine}</span>
-                      <span className={styles.title}>{product.title}</span>
-                      <span className={styles.price}>${product.price}.99</span>
+                      <a href="#" className={styles.noDecoration}>
+                        <img src={product.imageUrl} className={styles.image}></img>
+                        <span className={styles.productLine}>{product.productLine}</span>
+                        <span className={styles.title}>{product.title}</span>
+                        <span className={styles.price}>${product.price}.99</span>
+                      </a>
                       <div className={styles.starContainer}>
                         <div className={styles.starOff}>★★★★★</div>
                         <div style={{ 'width': width }} className={styles.starOn}>★★★★★</div>
                       </div>
-                      <div className={styles.ratingCount}>&nbsp;({product.reviewCount})</div>
+                      <div className={styles.ratingCount}>&nbsp;<a href="#" className={styles.noDecoration}>({product.reviewCount})</a></div>
                       <div className={styles.buttonContainer}>
                         <button className={styles.cartButton}>
                           <svg viewBox="0 0 24 24" width="100%" height="100%">

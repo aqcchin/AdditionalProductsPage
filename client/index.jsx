@@ -5,10 +5,12 @@ import AdditionalProductsByType from './components/AdditionalProductsByType.jsx'
 import AdditionalProductsByProductLine from './components/AdditionalProductsByProductLine.jsx';
 import DesignerThoughts from './components/DesignerThoughts.jsx';
 import CoordinatingProducts from './components/CoordinatingProducts.jsx';
+import Arrow from './components/Arrow.jsx';
 
 const Index = () => {
   return (
     <div>
+
       <CoordinatingProducts />
       <DesignerThoughts />
 
@@ -23,6 +25,7 @@ const Index = () => {
       <AdditionalProductsByProductLine />
       <AdditionalProductsByType />
       <Footer />
+      <Arrow />
     </div>
   );
 };
