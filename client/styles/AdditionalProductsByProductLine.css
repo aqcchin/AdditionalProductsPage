@@ -1,5 +1,9 @@
 /* COPIED FROM ADDITIONALPRODUCTSBYTYPE!!!!!! */
 
+.noDecoration {
+  text-decoration: none;
+  color: black;
+}
 
 .container {
   -webkit-font-smoothing: antialiased !important;
@@ -37,6 +41,10 @@
   width: 150px;
   margin: 0 10px;
   transition: left .3s,top .3s ease;
+}
+
+.product:hover > .noDecoration {
+  text-decoration: underline;
 }
 
 .image {
