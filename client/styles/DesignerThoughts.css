@@ -1,4 +1,6 @@
 .container {
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale;
   display: flex;
   flex-direction: row;
   justify-content: center;

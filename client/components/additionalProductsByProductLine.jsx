@@ -56,8 +56,9 @@ class AdditionalProductsByType extends Component {
             )
           })}
         </div>
-
-
+        <div className={styles.linkContainer}>
+          <a className={styles.link} href="">Go to {this.state.products[0].productLine.toUpperCase()} series</a>
+        </div>
       </div>
     );
   }
