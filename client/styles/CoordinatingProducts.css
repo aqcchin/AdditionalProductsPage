@@ -1,6 +1,8 @@
 .wideContainer {
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale;
   height: 352px;
-  overflow: hidden; 
+  width: 1200px;
   margin: 0 auto;
 }
 
@@ -70,8 +72,6 @@
   align-self: center;
 }
 
-
-
 .image {
   margin-bottom: 7px;
   width: 110px;
@@ -105,7 +105,7 @@
 
 .starContainer {
   float: left;
-  width: 75%;
+  width: 113px;
   display: block;
 }
 
@@ -174,12 +174,12 @@
   text-align: left;
   font-size: 11px;
   padding: 10px 10px;
-  top: -280px;
-  left: 313px;
+  top: -260px;
+  left: -45px;
   word-wrap: break-word;
   border-radius: 2px;
   margin: 0 0;
-  /* z-index: 10; */
+  /* z-index: 3; */
 }
 
 .text {
@@ -199,17 +199,109 @@
 }
 
 .Modal {
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 600px;
-  width: 600px;
+  height: 580px;
+  width: 720px;
   background-color: white;
   opacity: 1;
-  border: 25px solid rgba(51, 51, 51, 0.3);
+  border: 30px solid rgba(51, 51, 51, 0.3);
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
   padding: 20px 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 
+.closeBtnContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.closeBtn {
+  background-image: url(http://i66.tinypic.com/2lmv5hv.jpg);
+  background-position: 0 0;
+  width: 32px;
+  height: 32px;
+}
+
+.closeBtn:hover {
+  background-position: -32px 0;
+}
+
+.modalContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.infoContainer {
+  display: block;
+  width: 145px;
+}
+
+
+.modalHeader {
+  display: block;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 25px;
+  font-weight: bolder;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+}
+
+.modalTitle {
+  display: block;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 14px;
+  margin-bottom: 5px;
+  font-weight: lighter;
+}
+
+.modalPrice {
+  display: block;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 25px;
+  font-weight: bolder;
+  letter-spacing: -1px;
+}
+
+.modalReviewCount {
+  display: block;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 11px;
+  margin-top: 35px; 
+}
+
+.infoContainer:hover > .modalDescriptionContainer {
+  display: block;
+}
+
+.modalDescriptionContainer {
+  display: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 11px;
+  margin-top: 5px;
+}
+
+.modalDescription {
+  margin-bottom: 10px;
+}
+
+.modelDescriptionLinks {
+  border-top: 1px solid #CCC;
+  color: #3399FD;
+  margin-top: 15px;
+  text-decoration: underline;
+  padding-top: 10px;
+}
+
+.modalImage {
+  width: 400px;
+  height: 400px;
+  margin: 20px 20px;
 }

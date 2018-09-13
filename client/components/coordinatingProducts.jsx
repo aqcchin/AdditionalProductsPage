@@ -10,7 +10,8 @@ class CoordinatingProducts extends Component {
     super(props);
     this.state = {
       products: [],
-      modalIsOpen: false
+      modalIsOpen: false,
+      spotlight: 'placeholder'
     }
 
     this.getProducts = this.getProducts.bind(this);
@@ -23,8 +24,12 @@ class CoordinatingProducts extends Component {
     this.getProducts();
   }
 
-  openModal() {
-    this.setState({ modalIsOpen: true });
+  openModal(product) {
+    console.log(product);
+    this.setState({
+      spotlight: product,
+      modalIsOpen: true
+    });
   }
 
   afterOpenModal() {
@@ -94,7 +99,7 @@ class CoordinatingProducts extends Component {
                       </div>
                     </div>
 
-                    <div onClick={this.openModal} className={styles.magnifyContainer}>
+                    <div onClick={this.openModal.bind(this, product)} className={styles.magnifyContainer}>
                       <svg className={styles.magnify} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 
                         <path d="M21.21,19.79,15.6,14.19a7,7,0,1,0-1.41,1.41l5.61,5.61ZM4,10a6,6,0,1,1,6,6A6,6,0,0,1,4,10Z"></path>
@@ -112,19 +117,47 @@ class CoordinatingProducts extends Component {
               onRequestClose={this.closeModal}
               className={styles.Modal}
               overlayClassName={styles.Overlay}
-              contentLabel="Example Modal"
+              contentLabel="Product Modal"
             >
+              <div>
+                <div className={styles.closeBtnContainer}>
+                  <a className={styles.closeBtn} onClick={this.closeModal} href="#"></a>
+                </div>
+                <div className={styles.modalContainer}>
+                  <div className={styles.infoContainer}>
+                    <span className={styles.modalHeader}>{this.state.spotlight.productLine}</span>
 
-              <h2 ref={subtitle => this.subtitle = subtitle}>Hello</h2>
-              <button onClick={this.closeModal}>close</button>
-              <div>I am a modal</div>
-              <form>
-                <input />
-                <button>tab navigation</button>
-                <button>stays</button>
-                <button>inside</button>
-                <button>the modal</button>
-              </form>
+                    <span className={styles.modalTitle}>{this.state.spotlight.title}</span>
+
+                    <span className={styles.modalPrice}>${this.state.spotlight.price}.99</span>
+
+
+                    <div className={styles.starContainer}>
+                      <div className={styles.starOff}>★★★★★</div>
+                      <div style={{ 'width': this.state.spotlight.stars / 5 * 100 + "%" }} className={styles.starOn}>★★★★★</div>
+                    </div>
+                    <div className={styles.modalReviewCount}>({this.state.spotlight.reviewCount})</div>
+
+                    <div className={styles.modalDescriptionContainer}>
+                      <div>
+                        {this.state.spotlight.description}
+                      </div>
+                      <div className={styles.modelDescriptionLinks}>
+                        Save to list
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div >
+                    <img className={styles.modalImage} src={this.state.spotlight.imageUrl}></img>
+                  </div>
+
+
+
+                </div>
+              </div>
+
             </Modal>
 
           </div>

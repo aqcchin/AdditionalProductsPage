@@ -2,6 +2,8 @@
 
 
 .container {
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale;
   width: 1060px;
   margin: 0 auto;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
