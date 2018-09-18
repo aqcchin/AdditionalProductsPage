@@ -16,7 +16,7 @@ class DesignerThoughts extends Component {
   }
 
   getDesigners() {
-    axios.get('/api/designer', {
+    axios.get('http://localhost:4000/api/designer', {
       params: { productLine: 'fillmein' }
     })
       .then((response) => {

@@ -42,7 +42,7 @@ class CoordinatingProducts extends Component {
 
 
   getProducts() {
-    axios.get('/api/product', {
+    axios.get('http://localhost:4000/api/product', {
       params: { type: 'fillmein' }
     })
       .then((response) => {
