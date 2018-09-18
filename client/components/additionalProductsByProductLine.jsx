@@ -21,7 +21,7 @@ class AdditionalProductsByType extends Component {
   }
 
   getProducts() {
-    axios.get('/api/product', {
+    axios.get('http://localhost:4000/api/product', {
       params: { productLine: 'fillmein' }
     })
       .then((response) => {
