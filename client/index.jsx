@@ -32,5 +32,5 @@ const Index = () => {
 
 export default Index;
 
-ReactDOM.render(<Index />, document.getElementById('alternating'));
+ReactDOM.render(<Index />, document.getElementById('app'));
 
