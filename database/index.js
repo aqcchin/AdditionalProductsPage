@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 var random = require('mongoose-simple-random');
 
-mongoose.connect('mongodb://localhost/IkeaDB', { useNewUrlParser: true });
+mongoose.connect('mongodb://mongo:27017/IkeaDB', { useNewUrlParser: true });
 
 var db = mongoose.connection;
 
