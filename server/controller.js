@@ -1,4 +1,8 @@
-const { products, designers } = require('../database/index.js');
+// MongoDB database (default)
+// const { products, designers } = require('../database/index.js');
+
+// PostgreSQL database
+const { products, designers } = require('../database/postgresql/index.js');
 
 module.exports = {
   getProduct: (req, res) => {
@@ -46,5 +50,25 @@ module.exports = {
   postDesigner: (req, res) => {
     console.log('inside postdesigner');
     res.status(200).send('success');
+  },
+
+// ===================================
+// Additional CRUD functions
+// ===================================
+
+  updateProduct: (req, res) => {
+
+  },
+
+  deleteProduct: (req, res) => {
+
+  },
+  
+  updateDesigner: (req, res) => {
+
+  },
+
+  deleteDesigner: (req, res) => {
+    
   }
 }
