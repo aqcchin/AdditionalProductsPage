@@ -16,14 +16,50 @@ class DesignerThoughts extends Component {
   }
 
   getDesigners() {
-    axios.get('http://34.219.169.248:4000/api/designer', {
-      params: { productLine: 'fillmein' }
+    // axios.get('http://34.219.169.248:4000/api/designer', {
+    axios.get('api/designer', {
+      // params: { productLine: 'fillmein' }
+      params: { 
+        designerName: 'John Smith'
+      }
     })
       .then((response) => {
+        console.log('getting designers', response);
         this.setState({
           designers: response.data
         });
       }).catch(err => { console.log(err) });
+
+    // =========================================
+    
+    // axios.post('api/designer', {
+    //   params: {
+    //     id: 10000001,
+    //     designerName: 'John Smith',
+    //     productLine: 'stuff',
+    //     thoughts: 'Something awesome',
+    //     imageUrl: 'http://dummyimage.com/400x400.png/ff4444/ffffff'
+    //   }
+    // }).then(response => {
+    //   // console.log('Successfully posted data', response)
+    // }).catch(err => {
+    //   console.log('Error posting data')
+    // })
+
+    // =========================================
+
+    axios.put('api/designers', {
+      params: {
+        designerName: 'John Smith',
+        productLine: 'More stuff'
+      }
+    })
+    .then(response => {
+      console.log('updating designers', response);
+    })
+    .catch(err => {
+      console.log('Error updating designers');
+    })
   }
 
   render() {

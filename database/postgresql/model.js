@@ -1,9 +1,10 @@
 const Sequelize = require('sequelize');
-const connection = require('.');
+const connection = require('./index.js');
 
 const designers = connection.define('designers', {
   id: {
     type: Sequelize.INTEGER,
+    primaryKey: true,
     allowNull: false
   },
   designerName: {
@@ -27,6 +28,7 @@ const designers = connection.define('designers', {
 const products = connection.define('products', {
   id: {
     type: Sequelize.INTEGER,
+    primaryKey: true,
     allowNull: false
   },
   title: {

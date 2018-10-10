@@ -21,10 +21,13 @@ class AdditionalProductsByType extends Component {
   }
 
   getProducts() {
-    axios.get('http://34.219.169.248:4000/api/product', {
-      params: { productLine: 'fillmein' }
+    // axios.get('http://34.219.169.248:4000/api/product', {
+    axios.get('api/product', {
+      // params: { productLine: 'fillmein' }
+      params: { productLine: 'at' }
     })
       .then((response) => {
+        // console.log('PL response', response.data)
         this.setState({
           products: response.data
         });

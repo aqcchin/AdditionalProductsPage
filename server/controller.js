@@ -2,70 +2,154 @@
 // const { products, designers } = require('../database/index.js');
 
 // PostgreSQL database
-const { products, designers } = require('../database/postgresql/index.js');
+const { designers, products } = require('../database/postgresql/model.js');
+
+// ===================================
+// Products functions
+// ===================================
 
 module.exports = {
   getProduct: (req, res) => {
-    var filterType = req.query.type;
-    var filterProductLine = req.query.productLine;
+    console.log('get product');
+    var query = req.query;
 
-    if (filterType) {
-      // Get only products matching this filter type
-    } else if (filterProductLine) {
-      // Get only products matching this filter type
+    if (query.productLine) {
+      products.findAll({
+        where: query,
+        limit: 6
+      }).then(data => {
+        console.log('Sucessfully fetched product data', data);
+        res.status(200).send(data);
+      }).catch(err => {
+        res.status(404).send('Error fetching product');
+      });
     }
+
+    // ======================================
+  
+    // var filterType = req.query.type;
+    // var filterProductLine = req.query.productLine;
+
+    // if (filterType) {
+    //   // Get only products matching this filter type
+    // } else if (filterProductLine) {
+    //   // Get only products matching this filter type
+    // }
 
     // No filter functionality is implemented currently, so using the below 
     // code to retrieve random entries from the database
-    products.findRandom({}, {}, { limit: 6 }, function (err, results) {
-      if (err) {
-        res.status(404).send('Error');
-      } else {
-        res.status(200).json(results);
-      }
-    });
+    // products.findRandom({}, {}, { limit: 6 }, function (err, results) {
+    //   if (err) {
+    //     res.status(404).send('Error');
+    //   } else {
+    //     res.status(200).json(results);
+    //   }
+    // });
   },
 
   postProduct: (req, res) => {
     console.log('inside postproduct');
-    res.status(200).send('success');
+    var newData = req.body.params;
+
+    products.create(newData)
+      .then(data =>  {
+        console.log('A new product has been created', data);
+        res.status(201).send('Success');
+      })
+      .catch(err => {
+        console.log('Error creating product');
+        res.status(404).send('Error');
+      })
+    
   },
 
-  getDesigner: (req, res) => {
-    var productLine = req.query.productLine;
+  updateProduct: (req, res) => {
+    var newData = req.query;
 
+    products.update(newData, { where: { id: 1 } })
+      .then(data => {
+        console.log('New entry:', data);
+      })
+      .catch(err => {
+        console.log('Error updating data');
+      })
+  },
+
+  deleteProduct: (req, res) => {
+    var query = req.query;
+
+    // products.destroy({})
+  },
+
+
+// ===================================
+// Designers functions
+// ===================================
+
+  getDesigner: (req, res) => {
+    var query = req.query;
+    // console.log('get designer', query)
+
+    if (query.designerName) {
+      designers.findAll({
+        where: query,
+        limit: 1
+      }).then(data => {
+        console.log('get designer data', data);
+        res.status(200).send(data);
+      }).catch(err => {
+        console.log('Error getting product');
+      });
+    }
+
+    // ======================================
+
+    // var productLine = req.query.productLine;
+    
     // Implement a db query using the product line above, find the designer who created the product line
 
     // No filter functionality is implemented currently, so using the below 
     // code to retrieve random entries from the database
-    designers.findRandom({}, {}, { limit: 1 }, function (err, results) {
-      if (err) {
-        res.status(404).send('Error');
-      } else {
-        res.status(200).json(results);
-      }
-    });
+    // designers.findRandom({}, {}, { limit: 1 }, function (err, results) {
+    //   if (err) {
+    //     res.status(404).send('Error');
+    //   } else {
+    //     res.status(200).json(results);
+    //   }
+    // });
   },
 
   postDesigner: (req, res) => {
-    console.log('inside postdesigner');
-    res.status(200).send('success');
-  },
+    console.log('inside postDesigner');
+    var newData = req.body.params;
 
-// ===================================
-// Additional CRUD functions
-// ===================================
+    // console.log('post designer', newData);
 
-  updateProduct: (req, res) => {
+    designers.create(newData)
+      .then(data =>  {
+        console.log('A new designer has been created', data);
+      })
+      .catch(err => {
+        console.log('Error creating designer');
+      })
+    res.status(201).send('Success');
+    
+    // ======================================
 
-  },
-
-  deleteProduct: (req, res) => {
-
+    // console.log('inside postdesigner');
+    // res.status(200).send('success');
   },
   
   updateDesigner: (req, res) => {
+    var query = req;
 
+    console.log('in update designers', query);
+
+    designers.update()
+      .then()
+      .catch();
+
+    res.status(204).send('Success');
   },
 
   deleteDesigner: (req, res) => {
