@@ -3,7 +3,8 @@ const Sequelize = require('sequelize');
 var connection = new Sequelize ('ikeadb', '', '', {
   host: 'localhost',
   dialect: 'postgres',
-  port: '5432'
+  port: '5432',
+  logging: false
 });
 
 connection.authenticate()

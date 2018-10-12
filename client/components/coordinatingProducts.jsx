@@ -45,7 +45,9 @@ class CoordinatingProducts extends Component {
     // axios.get('http://34.219.169.248:4000/api/product', {
     axios.get('api/product', {
       // params: { type: 'fillmein' }
-      params: { productLine: 'at' }
+      params: { 
+        // productLine: 'at'
+      }
     })
       .then((response) => {
         this.setState({

@@ -20,11 +20,11 @@ class DesignerThoughts extends Component {
     axios.get('api/designer', {
       // params: { productLine: 'fillmein' }
       params: { 
-        designerName: 'John Smith'
+        // designerName: 'J Jelinek'
       }
     })
       .then((response) => {
-        console.log('getting designers', response);
+        // console.log('getting designers', response);
         this.setState({
           designers: response.data
         });
@@ -48,18 +48,31 @@ class DesignerThoughts extends Component {
 
     // =========================================
 
-    axios.put('api/designers', {
-      params: {
-        designerName: 'John Smith',
-        productLine: 'More stuff'
-      }
-    })
-    .then(response => {
-      console.log('updating designers', response);
-    })
-    .catch(err => {
-      console.log('Error updating designers');
-    })
+    // axios.put('api/designers/' + 10000001, {
+    //   params: {
+    //     productLine: 'More stuff'
+    //   }
+    // })
+    // .then(response => {
+    //   console.log('updating designer', response);
+    // })
+    // .catch(err => {
+    //   console.log('Error updating designers');
+    // })
+
+    // =========================================
+
+    // axios.delete('api/designers', {
+    //   data: {
+    //     id: 10000001
+    //   }
+    // })
+    // .then(() => {
+      
+    // })
+    // .catch(err => {
+    //   console.log('Error deleting designers');
+    // });
   }
 
   render() {

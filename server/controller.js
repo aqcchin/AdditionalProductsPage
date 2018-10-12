@@ -10,20 +10,26 @@ const { designers, products } = require('../database/postgresql/model.js');
 
 module.exports = {
   getProduct: (req, res) => {
-    console.log('get product');
-    var query = req.query;
+    // console.log('get product');
+    // var query = req.query;
+    var ids = [];
 
-    if (query.productLine) {
+    for(var i = 0; i < 6; i++) {
+      ids.push( Math.floor(Math.random() * (10000000 - 9000000)) + 9000000);
+    }
+
+    // if (query.productLine) {
       products.findAll({
-        where: query,
+        // where: query,
+        where: { id: ids },
         limit: 6
       }).then(data => {
-        console.log('Sucessfully fetched product data', data);
+        // console.log('Sucessfully fetched product data', data);
         res.status(200).send(data);
       }).catch(err => {
         res.status(404).send('Error fetching product');
       });
-    }
+    // }
 
     // ======================================
   
@@ -89,18 +95,20 @@ module.exports = {
   getDesigner: (req, res) => {
     var query = req.query;
     // console.log('get designer', query)
+    var id = [ Math.floor(Math.random() * (10000000 - 9000000)) + 9000000 ];
 
-    if (query.designerName) {
+    // if (query.designerName) {
       designers.findAll({
-        where: query,
+        // where: query,
+        where: { id: id },
         limit: 1
       }).then(data => {
-        console.log('get designer data', data);
+        // console.log('get designer data', data);
         res.status(200).send(data);
       }).catch(err => {
         console.log('Error getting product');
       });
-    }
+    // }
 
     // ======================================
 
@@ -153,6 +161,7 @@ module.exports = {
   },
 
   deleteDesigner: (req, res) => {
-    
+    var query = req;
+    console.log('delete', query);
   }
 }

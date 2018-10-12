@@ -1,1 +1,4 @@
 node_modules
+/database/*.json
+/database/data/*.json
+/database/data/*.csv
