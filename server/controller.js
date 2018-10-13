@@ -2,7 +2,8 @@
 // const { products, designers } = require('../database/index.js');
 
 // PostgreSQL database
-const { designers, products } = require('../database/postgresql/model.js');
+// const { designers, products } = require('../database/postgresql/model.js');
+const query = require('../database/postgresql/index.js');
 
 // ===================================
 // Products functions
@@ -10,25 +11,57 @@ const { designers, products } = require('../database/postgresql/model.js');
 
 module.exports = {
   getProduct: (req, res) => {
-    // console.log('get product');
-    // var query = req.query;
-    var ids = [];
+    var ids = '(';
 
     for(var i = 0; i < 6; i++) {
-      ids.push( Math.floor(Math.random() * (10000000 - 9000000)) + 9000000);
+      if (i === 5) {
+        ids += Math.floor(Math.random() * (10000000 - 9000000)) + 9000000 + ')';
+      } else {
+        ids += Math.floor(Math.random() * (10000000 - 9000000)) + 9000000 + ', ';
+      }
     }
 
+    // console.log('query', query);
+
+    query(`SELECT * FROM products WHERE "id" in ${ids}`, function(data) {
+      // console.log('data', data);
+      res.status(200).send(data.rows);
+    })
+
+    // ======================================
+    
+    // var getProducts = db.query(
+    //     `SELECT * FROM products WHERE "id" in ${ids}`
+    //   )
+    //   .then(result => {
+    //       // console.log(result)
+    //       res.status(200).send(result.rows);
+    //     }
+    //   )
+    //   .catch(err => console.log(err))
+    //   .then(() => db.end());
+
+    // ======================================
+  
+    // console.log('get product');
+    // var query = req.query;
+    // var ids = [];
+
+    // for(var i = 0; i < 6; i++) {
+    //   ids.push( Math.floor(Math.random() * (10000000 - 9000000)) + 9000000);
+    // }
+
     // if (query.productLine) {
-      products.findAll({
-        // where: query,
-        where: { id: ids },
-        limit: 6
-      }).then(data => {
-        // console.log('Sucessfully fetched product data', data);
-        res.status(200).send(data);
-      }).catch(err => {
-        res.status(404).send('Error fetching product');
-      });
+      // products.findAll({
+      //   // where: query,
+      //   where: { id: ids },
+      //   limit: 6
+      // }).then(data => {
+      //   // console.log('Sucessfully fetched product data', data);
+      //   res.status(200).send(data);
+      // }).catch(err => {
+      //   res.status(404).send('Error fetching product');
+      // });
     // }
 
     // ======================================
@@ -70,15 +103,15 @@ module.exports = {
   },
 
   updateProduct: (req, res) => {
-    var newData = req.query;
+    // var newData = req.query;
 
-    products.update(newData, { where: { id: 1 } })
-      .then(data => {
-        console.log('New entry:', data);
-      })
-      .catch(err => {
-        console.log('Error updating data');
-      })
+    // products.update(newData, { where: { id: 1 } })
+    //   .then(data => {
+    //     console.log('New entry:', data);
+    //   })
+    //   .catch(err => {
+    //     console.log('Error updating data');
+    //   })
   },
 
   deleteProduct: (req, res) => {
@@ -93,21 +126,29 @@ module.exports = {
 // ===================================
 
   getDesigner: (req, res) => {
-    var query = req.query;
-    // console.log('get designer', query)
-    var id = [ Math.floor(Math.random() * (10000000 - 9000000)) + 9000000 ];
+    var id = Math.floor(Math.random() * (10000000 - 9000000)) + 9000000;
+
+    query(`SELECT * FROM designers WHERE "id" = ${id}`, function(data) {
+      res.status(200).send(data.rows);
+    });
+
+    // ======================================
+
+    // var query = req.query;
+    // // console.log('get designer', query)
+    // var id = [ Math.floor(Math.random() * (10000000 - 9000000)) + 9000000 ];
 
     // if (query.designerName) {
-      designers.findAll({
-        // where: query,
-        where: { id: id },
-        limit: 1
-      }).then(data => {
-        // console.log('get designer data', data);
-        res.status(200).send(data);
-      }).catch(err => {
-        console.log('Error getting product');
-      });
+      // designers.findAll({
+      //   // where: query,
+      //   where: { id: id },
+      //   limit: 1
+      // }).then(data => {
+      //   // console.log('get designer data', data);
+      //   res.status(200).send(data);
+      // }).catch(err => {
+      //   console.log('Error getting product');
+      // });
     // }
 
     // ======================================
@@ -131,8 +172,6 @@ module.exports = {
     console.log('inside postDesigner');
     var newData = req.body.params;
 
-    // console.log('post designer', newData);
-
     designers.create(newData)
       .then(data =>  {
         console.log('A new designer has been created', data);
@@ -149,19 +188,19 @@ module.exports = {
   },
   
   updateDesigner: (req, res) => {
-    var query = req;
+    // var query = req;
 
-    console.log('in update designers', query);
+    // console.log('in update designers', query);
 
-    designers.update()
-      .then()
-      .catch();
+    // designers.update()
+    //   .then()
+    //   .catch();
 
-    res.status(204).send('Success');
+    // res.status(204).send('Success');
   },
 
   deleteDesigner: (req, res) => {
-    var query = req;
-    console.log('delete', query);
+    // var query = req;
+    // console.log('delete', query);
   }
 }
