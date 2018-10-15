@@ -21,10 +21,7 @@ module.exports = {
       }
     }
 
-    // console.log('query', query);
-
     query(`SELECT * FROM products WHERE "id" in ${ids}`, function(data) {
-      // console.log('data', data);
       res.status(200).send(data.rows);
     })
 

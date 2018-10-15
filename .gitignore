@@ -15,3 +15,6 @@ package-lock.json
 # New Relic
 newrelic.js
 newrelic_agent.log
+
+# Keys
+aws-keys.json
